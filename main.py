@@ -26,7 +26,6 @@ for tf, gene, effect in interactions:
         regulon[tf] = []  # primero se crea la llave con lista vacía
     regulon[tf].append(gene)  # se agrega gene
 
-
 # Key error: error de llave [primero tiene que crear el key y luego agrega lo que necesita]
 
 # Imprimimos el resumen de cada TF
@@ -36,5 +35,32 @@ for tf, genes in regulon.items():
 for tf in sorted(regulon):
     total_genes = len(regulon[tf])
     lista_genes = ", ".join(regulon[tf])
+    print(f"{tf}\t{total_genes}\t{lista_genes}")
 
+# Diccionaro con subdiccionarios para activadores y represores:
+# "araC" --> 5
+
+# "araC" --> "genes" --> ["araA", "araB"]
+# "araC" --> "activados" --> 1
+# "araC" --> "reprimidos" --> 1
+
+regulon = {}
+for tf, gene, effect in interactions:
+    if tf not in regulon:
+        regulon[tf] = {
+            "genes": [],
+            "activados": 0,
+            "reprimidos": 0,
+        }  # primero se crea la llave con lista vacía
+    regulon[tf]["genes"].append(gene)  # se agrega gene
+
+# Key error: error de llave [primero tiene que crear el key y luego agrega lo que necesita]
+
+# Imprimimos el resumen de cada TF
+for tf, genes in regulon.items():
+    print(f"{tf}\t{len(genes)}\t{', '.join(genes)}")
+
+for tf in sorted(regulon):
+    total_genes = len(regulon[tf]["genes"])
+    lista_genes = ", ".join(regulon[tf]["genes"])
     print(f"{tf}\t{total_genes}\t{lista_genes}")
