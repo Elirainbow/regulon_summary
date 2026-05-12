@@ -2,7 +2,7 @@ import os
 
 # =======================================================
 # Lectura del archivo y construcción de interactions
-# Entrada: Archivo
+# # Entrada: Archivo
 # Salida: Lista de interacciones (TF, gene, effect)
 # # =====================================================
 
